@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
+        <title>To Do App</title>
+    </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
-  <title>To Do App</title>
-</head>
+    <body>
+        <!-- Nav --hard coded-->
+        <nav class="nav">
+            <!-- logo -->
+            <h1 class="font-heading-primary">To Do</h1>
+        </nav>
+        <!-- Body -->
+        <div class="main">
+            <!-- Info Box --hard coded -->
 
-<body>
-  <!-- Nav --hard coded-->
-  <nav class="nav">
-    <!-- logo -->
-    <h1 class="font-heading-primary">To Do</h1>
+            <div class="overview card-size border-card">
+                <!-- heading (h2)-->
+                <h2>All Tasks</h2>
+                <!-- % (h4)-->
+                <h4>32% done</h4>
+                <!-- Num-Tasks (h5)-->
+                <h5>49 tasks</h5>
+            </div>
+            <!-- categories-Cards -->
+            <div class="overview card-size border-card white">
+                <!-- heading (h2)-->
+                <h2>Person Cat</h2>
+                <!-- % (h4)-->
+                <h4>32% done</h4>
+                <!-- Num-Tasks (h5)-->
+                <h5>49 tasks</h5>
+            </div>
+            <div class="overview card-size border-card white">
+                <!-- heading (h2)-->
+                <h2>Shopping Cat</h2>
+                <!-- % (h4)-->
+                <h4>32% done</h4>
+                <!-- Num-Tasks (h5)-->
+                <h5>49 tasks</h5>
+            </div>
+            <!-- tasks created by JS -->
+        </div>
 
-  </nav>
-  <!-- Body -->
-  <div class="main">
-    <!-- Info Box --hard coded -->
-    <div class="overview">
-      <!-- heading (h2)-->
-      <!-- % (h4)-->
-      <!-- Num-Tasks (h5)-->
-    </div>
-    <!-- categories-Cards -->
-    <!-- tasks created by JS -->
-  </div>
-  <!-- Body -->
-  <!-- Functional Nav --hard coded-->
-  <div class="add-category">
-    <button>+</button>
-  </div>
+        <!-- Body -->
+        <!-- Functional Nav --hard coded-->
+        <div class="add-category">
+            <button>+</button>
+        </div>
 
-
-
-
-  <script src="./app.js"></script>
-</body>
-
+        <script src="./app.js"></script>
+    </body>
 </html>
