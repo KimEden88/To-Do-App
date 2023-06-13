@@ -1,0 +1,55 @@
+/*
+Nav color : #465362
+Nav Font : #E4EBF2
+Btns: #DE643F
+Static Card: #9FC490
+Cards: #C0DFA1
+Cards font: #465362
+background page: #E4EBF2
+
+
+*/
+.font-heading-primary {
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  color: #e4ebf2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e4ebf2;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #465362;
+  width: 95%;
+  height: 8%;
+  margin-top: 2rem;
+  border-bottom: 0.5rem solid #333c48;
+  border-radius: 5rem;
+}
+
+.main {
+  border: 0.2rem solid #333c48;
+  width: 95%;
+  height: 80%;
+  border-radius: 5rem;
+}
