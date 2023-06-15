@@ -55,7 +55,14 @@ function addTodo(event) {
 
     //Get the Task
 }
+
+function deleteTodo() {
+    const todoItem = this.parentElement.parentElement;
+    todoItem.remove();
+}
+
 // todoBtn.addEventListener("click", addTodo);
+
 let todoId = 0;
 
 const render = (e) => {
@@ -64,23 +71,29 @@ const render = (e) => {
     task.classList.add(`${todoId + 1}`);
     todoId += 1;
     todoList.appendChild(task);
-    // tasks.forEach((task) => {
-    //     const item = {itemNumber : }
 
-    // })
     todoInput.value = "";
 
-    const deleteBtn = document.querySelector(".deleteBtn");
-    const removeTask = (e) => {
-        return console.log(deleteBtn.parentElement.parentElement);
-        // return deleteBtn.parentElement.parentElement.remove();
-    };
-    deleteBtn.addEventListener("click", removeTask);
+    //delete btn clicked event
+    const deleteBtns = document.querySelectorAll(".deleteBtn");
+
+    deleteBtns.forEach((btn) => {
+        btn.addEventListener("click", deleteTodo);
+    });
+
+    //update btn clicked event
+    //replace li with input field
+    //get the value of input value
+    //change the li value with input value when clicked the Updatebtn again
+
+    // const deleteBtn = document.querySelector(".deleteBtn");
+    // const removeTask = (e) => {
+    //     return console.log(deleteBtn.parentElement.parentElement);
+    //     // return deleteBtn.parentElement.parentElement.remove();
+    // };
+    // deleteBtn.addEventListener("click", removeTask);
 };
 todoBtn.addEventListener("click", render);
-
-// console.log(todoId);
-// for (let i=0; i < )
 
 /* 
 selecting the DOM element to create the function on it.
