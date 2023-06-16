@@ -143,6 +143,12 @@ ul {
 .action-btn i {
     font-size: 1.7rem;
 }
+
+.checkBtn {
+    background-color:#465362;
+    color: #465362;
+}
+
 .todo-item {
     width: 30%;
     margin-left: 1rem;

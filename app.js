@@ -3,11 +3,22 @@ const todoInput = document.querySelector(".todo-input");
 const todoBtn = document.querySelector(".todo-btn");
 const todoList = document.querySelector(".todo-list");
 
-const tasks = [];
+let todos = [];
 // id, title of task,
 //Event Listeners
+// Converting our Todos objects into strings (so local storage can handle it)
+const saveToLocalStorage = () => {
+    const stringifiedTodos = JSON.stringify(todos);
+    localStorage.setItem("todos", stringifiedTodos);
+}
+// Converting our Todos strings back into objects
+const loadFromlocalStorage = () => {
+    const parsedTodos = JSON.parse(localStorage.getItem("todos"));
+    parsedTodos? todos = parsedTodos: todos = [];
+}
 
-//Functions
+render();
+
 function addTodo(event) {
     // event.preventDefault();
 
@@ -28,9 +39,10 @@ function addTodo(event) {
     todoDiv.appendChild(buttonsContainer);
 
     //Check btn
-    const completedBtn = document.createElement("button");
-    completedBtn.innerHTML =
-        '<i class="fa-regular fa-square-check" style="color: #465362;"></i>';
+    const completedBtn = document.createElement("input");
+    // completedBtn.innerHTML =
+    //     '<i class="fa-regular fa-square-check" style="color: #465362;"></i>';
+    completedBtn.type = "checkbox";
     completedBtn.classList.add("action-btn");
     completedBtn.classList.add("checkBtn");
     buttonsContainer.appendChild(completedBtn);
@@ -93,19 +105,22 @@ function updateTodo() {
 
 let todoId = 0;
 
+
+
 const render = (e) => {
+    // todos.forEach((todo) => {
     e.preventDefault();
     const task = addTodo();
-    task.classList.add(`${todoId + 1}`);
-    todoId += 1;
     todoList.appendChild(task);
-
+    // Resetting our Input
     todoInput.value = "";
 
     //delete btn clicked event
-    const deleteBtns = document.querySelectorAll(".deleteBtn");
+    deleteBtn.addEventListener("click",() => {
+        // todos = todos.filter() => 
+    });
 
-    deleteBtns.forEach((btn) => {
+    deleteBtn.forEach((btn) => {
         btn.addEventListener("click", deleteTodo);
     });
 
@@ -117,7 +132,8 @@ const render = (e) => {
 
     updateBtns.forEach((btn) => {
         btn.addEventListener("click", updateTodo);
-    });
+    });   
+// })
 
     // const deleteBtn = document.querySelector(".deleteBtn");
     // const removeTask = (e) => {
@@ -126,6 +142,7 @@ const render = (e) => {
     // };
     // deleteBtn.addEventListener("click", removeTask);
 };
+
 todoBtn.addEventListener("click", render);
 
 /* 
