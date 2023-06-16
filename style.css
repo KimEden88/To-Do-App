@@ -145,7 +145,7 @@ ul {
 }
 
 .checkBtn {
-    background-color:#465362;
+    background-color: #465362;
     color: #465362;
 }
 
@@ -160,4 +160,7 @@ ul {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+.hidden {
+    display: none;
 }
