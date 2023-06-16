@@ -60,36 +60,33 @@ function deleteTodo() {
     const todoItem = this.parentElement.parentElement;
     todoItem.remove();
 }
-function updateTodo (){
+function updateTodo() {
     // save the content of li in a variable.
-    
+
     const todoItem = this.parentElement.parentElement;
     console.log(todoItem);
     console.log(todoItem.querySelector("li"));
     const todoLi = todoItem.querySelector(".todo-item");
-    const liValue=todoLi.innerText;
+    const liValue = todoLi.innerText;
+
     // creating an input element
     const updateValue = document.createElement("input");
     updateValue.classList.add("update-value");
     updateValue.classList.add("todo-input");
-    updateValue.type="text";
+    updateValue.type = "text";
     console.log(typeof liValue);
-    updateValue.input=liValue;
+    updateValue.value = liValue;
+
     todoItem.replaceChild(updateValue, todoLi);
-    updateValue.focus()
-    updateValue.addEventListener("blur",()=>{
-        const updateValue=updateValue.value;
+
+    updateValue.focus();
+    updateValue.addEventListener("blur", () => {
+        const newValue = updateValue.value; // the updatedValue was called twice,instead stored it in a new variable
         const newLi = document.createElement("li");
-    newLi.classList.add("todo-item");
-    newLi.innerText = updatedValue;
-    todoItem.replaceChild(newLi, updateValue);
-
+        newLi.classList.add("todo-item");
+        newLi.innerText = newValue;
+        todoItem.replaceChild(newLi, updateValue);
     });
-
-    
-    
-    
-
 }
 
 // todoBtn.addEventListener("click", addTodo);
@@ -119,8 +116,8 @@ const render = (e) => {
     const updateBtns = document.querySelectorAll(".updateBtn");
 
     updateBtns.forEach((btn) => {
-        btn.addEventListener("click", updateTodo)});
-
+        btn.addEventListener("click", updateTodo);
+    });
 
     // const deleteBtn = document.querySelector(".deleteBtn");
     // const removeTask = (e) => {
