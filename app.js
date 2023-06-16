@@ -78,10 +78,12 @@ function updateTodo (){
     todoItem.replaceChild(updateValue, todoLi);
     updateValue.focus()
     updateValue.addEventListener("blur",()=>{
-        const updateValue=updateValue.value;
+        // updateValue.innerText = updateValue.value;
+        const newValue=updateValue.value;
         const newLi = document.createElement("li");
     newLi.classList.add("todo-item");
-    newLi.innerText = updatedValue;
+    newLi.innerText = newValue;
+    console.log (newValue,updateValue.value)
     todoItem.replaceChild(newLi, updateValue);
 
     });
