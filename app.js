@@ -1,154 +1,156 @@
 //selectors
-const todoInput = document.querySelector(".todo-input");
-const todoBtn = document.querySelector(".todo-btn");
-const todoList = document.querySelector(".todo-list");
+const todoInput = document.querySelector('.todo-input');
+const todoBtn = document.querySelector('.todo-btn');
+const todoList = document.querySelector('.todo-list');
+const form = document.querySelector('form');
 
+//Todo array of objects
 let todos = [];
-// id, title of task,
-//Event Listeners
+
+//!Local storage:
 // Converting our Todos objects into strings (so local storage can handle it)
 const saveToLocalStorage = () => {
-    const stringifiedTodos = JSON.stringify(todos);
-    localStorage.setItem("todos", stringifiedTodos);
-}
+  const stringifiedTodos = JSON.stringify(todos);
+  localStorage.setItem('todos', stringifiedTodos);
+};
 // Converting our Todos strings back into objects
-const loadFromlocalStorage = () => {
-    const parsedTodos = JSON.parse(localStorage.getItem("todos"));
-    parsedTodos? todos = parsedTodos: todos = [];
-}
+const loadFromLocalStorage = () => {
+  const parsedTodos = JSON.parse(localStorage.getItem('todos'));
+  parsedTodos ? (todos = parsedTodos) : (todos = []);
+  addTodo();
+};
 
-render();
+function addTodo() {
+  todoList.innerHTML = '';
 
-function addTodo(event) {
-    // event.preventDefault();
+  todos.forEach((todo) => {
+    //!Creating the HTml structure:
 
     // DIV - Todo
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
+    const todoDiv = document.createElement('div');
+    todoDiv.classList.add('todo');
 
     // Create LI
-    const newTodo = document.createElement("li");
-    console.log(todoInput.value);
-    newTodo.classList.add("todo-item");
+    const newTodo = document.createElement('li');
+    newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
-    newTodo.innerText = todoInput.value;
+
+    //Creating Span
+    const updateValue = document.createElement('span');
+    updateValue.classList.add('update-value');
+    updateValue.classList.add('todo-input');
+    updateValue.type = 'text';
+    updateValue.textContent = todo.title;
+    newTodo.appendChild(updateValue);
 
     //Buttons Container
-    const buttonsContainer = document.createElement("div");
-    buttonsContainer.classList.add("buttonsContainer");
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.classList.add('buttonsContainer');
     todoDiv.appendChild(buttonsContainer);
 
     //Check btn
-    const completedBtn = document.createElement("input");
-    // completedBtn.innerHTML =
-    //     '<i class="fa-regular fa-square-check" style="color: #465362;"></i>';
-    completedBtn.type = "checkbox";
-    completedBtn.classList.add("action-btn");
-    completedBtn.classList.add("checkBtn");
+    const completedBtn = document.createElement('input');
+    completedBtn.type = 'checkbox';
+    completedBtn.classList.add('action-btn');
+    completedBtn.classList.add('checkBtn');
     buttonsContainer.appendChild(completedBtn);
 
     //Update btn
-    const updateBtn = document.createElement("button");
+    //Create btn
+    const updateBtn = document.createElement('button');
     updateBtn.innerHTML =
-        '<i class="fa-solid fa-pen-to-square" style="color: #465362;"></i>';
-    updateBtn.classList.add("action-btn");
-    updateBtn.classList.add("updateBtn");
+      '<i class="fa-solid fa-pen-to-square" style="color: #465362;"></i>';
+    updateBtn.classList.add('action-btn');
+    updateBtn.classList.add('updateBtn');
     buttonsContainer.appendChild(updateBtn);
+    //functionality:
+    updateBtn.addEventListener('click', () => {
+      //creating an input
+      const updateTodoInput = document.createElement('input');
+      updateTodoInput.type = 'text';
+      updateTodoInput.value = todo.title;
+      newTodo.replaceChild(updateTodoInput, updateValue);
+      updateTodoInput.addEventListener('blur', () => {
+        const newTitle = updateTodoInput.value;
+        const oldTitle = updateValue.textContent;
+        updateValue.textContent = newTitle;
+
+        todos = todos.map((b) => {
+          if (b.title === oldTitle) {
+            return { title: newTitle, isDone: b.isDone };
+          }
+          return b;
+        });
+        saveToLocalStorage();
+        newTodo.replaceChild(updateValue, updateTodoInput);
+      });
+    });
 
     //Delete btn
-    const deleteBtn = document.createElement("button");
+    //Create btn
+    const deleteBtn = document.createElement('button');
     deleteBtn.innerHTML =
-        '<i class="fa-solid fa-trash" style="color: #465362;"></i>';
-    deleteBtn.classList.add("action-btn");
-    deleteBtn.classList.add("deleteBtn");
+      '<i class="fa-solid fa-trash" style="color: #465362;"></i>';
+    deleteBtn.classList.add('action-btn');
+    deleteBtn.classList.add('deleteBtn');
     buttonsContainer.appendChild(deleteBtn);
-
-    return todoDiv;
-
-    //Get the Task
-}
-
-function deleteTodo() {
-    const todoItem = this.parentElement.parentElement;
-    todoItem.remove();
-}
-function updateTodo() {
-    // save the content of li in a variable.
-
-    const todoItem = this.parentElement.parentElement;
-    console.log(todoItem);
-    console.log(todoItem.querySelector("li"));
-    const todoLi = todoItem.querySelector(".todo-item");
-    const liValue = todoLi.innerText;
-
-    // creating an input element
-    const updateValue = document.createElement("input");
-    updateValue.classList.add("update-value");
-    updateValue.classList.add("todo-input");
-    updateValue.type = "text";
-    console.log(typeof liValue);
-    updateValue.value = liValue;
-
-    todoItem.replaceChild(updateValue, todoLi);
-
-    updateValue.focus();
-    updateValue.addEventListener("blur", () => {
-        const newValue = updateValue.value; // the updatedValue was called twice,instead stored it in a new variable
-        const newLi = document.createElement("li");
-        newLi.classList.add("todo-item");
-        newLi.innerText = newValue;
-        todoItem.replaceChild(newLi, updateValue);
+    //Functionality
+    deleteBtn.addEventListener('click', () => {
+      todos = todos.filter((b) => b.title !== todo.title);
+      saveToLocalStorage();
+      todoList.removeChild(todoDiv);
     });
+
+    todoList.appendChild(todoDiv);
+    saveToLocalStorage();
+  });
 }
 
-// todoBtn.addEventListener("click", addTodo);
+//!Functions:
 
-let todoId = 0;
+//Updating the Todo
+// function updateTodo() {
+//   // save the content of li in a variable.
+//   //updateValue.classList.remove('hidden');
+//   //newTodo.classList.add('hidden');
 
+//   const todoItem = this.parentElement.parentElement;
+//   console.log(todoItem);
+//   console.log(todoItem.querySelector('li'));
+//   const todoLi = todoItem.querySelector('.todo-item');
+//   const liValue = todoLi.innerText;
 
+//   updateValue.focus();
+//   updateValue.addEventListener('blur', () => {
+//     const newValue = updateValue.value; // the updatedValue was called twice,instead stored it in a new variable
+//     const newLi = document.createElement('li');
+//     newLi.classList.add('todo-item');
+//     newLi.innerText = newValue;
+//   });
+
+//   function deleteTodo() {
+
+//     //const todoItem = this.parentElement.parentElement;
+//     //todoItem.remove();
+// }
+//}
+
+//});
 
 const render = (e) => {
-    // todos.forEach((todo) => {
-    e.preventDefault();
-    const task = addTodo();
-    todoList.appendChild(task);
-    // Resetting our Input
-    todoInput.value = "";
+  e.preventDefault();
+  console.log(e.target.title.value);
+  let taskTitle = e.target.title.value;
 
-    //delete btn clicked event
-    deleteBtn.addEventListener("click",() => {
-        // todos = todos.filter() => 
-    });
+  const newTodoForArray = { title: taskTitle, isDone: false }; // can change the radio button access here
+  todos.push(newTodoForArray);
 
-    deleteBtn.forEach((btn) => {
-        btn.addEventListener("click", deleteTodo);
-    });
+  saveToLocalStorage();
 
-    //update btn clicked event
-    //replace li with input field
-    //get the value of input value
-    //change the li value with input value when clicked the Updatebtn again
-    const updateBtns = document.querySelectorAll(".updateBtn");
-
-    updateBtns.forEach((btn) => {
-        btn.addEventListener("click", updateTodo);
-    });   
-// })
-
-    // const deleteBtn = document.querySelector(".deleteBtn");
-    // const removeTask = (e) => {
-    //     return console.log(deleteBtn.parentElement.parentElement);
-    //     // return deleteBtn.parentElement.parentElement.remove();
-    // };
-    // deleteBtn.addEventListener("click", removeTask);
+  addTodo();
+  e.target.reset();
 };
 
-todoBtn.addEventListener("click", render);
-
-/* 
-selecting the DOM element to create the function on it.
-listen to click event for the specific button.
-remove the child element.
-
-*/
-//remove task -delete btn
+form.addEventListener('submit', render);
+loadFromLocalStorage();
+console.log(todos);
