@@ -10,41 +10,41 @@ background page: #E4EBF2
 
 */
 .font-heading-primary {
-    font-size: 2.5rem;
-    font-weight: 600;
-    letter-spacing: 0.2rem;
-    color: #465362;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  color: #465362;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-size: 62.5%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
 }
 
 body {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    gap: 2rem;
-    font-family: "Poppins", sans-serif;
-    width: 100vw;
-    height: 100vh;
-    background-color: #e4ebf2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-color: #e4ebf2;
 }
 
 .nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #465362;
-    width: 95%;
-    height: 8%;
-    margin-top: 2rem;
-    border-bottom: 0.5rem solid #333c48;
-    border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #465362;
+  width: 95%;
+  height: 8%;
+  margin-top: 2rem;
+  border-bottom: 0.5rem solid #333c48;
+  border-radius: 5rem;
 }
 
 /* .main {
@@ -86,78 +86,93 @@ body {
     box-shadow: 15px 28px 25px -18px rgba(0, 0, 0, 0.2);
 } */
 .todo-input {
-    height: 3rem;
-    width: 25rem;
-    border-radius: 1rem;
-    text-align: center;
-    font-size: 2.3rem;
+  height: 3rem;
+  width: 25rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 2.3rem;
 }
 form {
-    background-color: #465362;
-    padding: 1rem;
-    border-radius: 1rem;
-    width: 85%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+  background-color: #465362;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 form button {
-    border: none;
-    padding: 0.9rem;
-    background-color: #465362;
-    font-size: 1rem;
-    border-radius: 1rem;
-    border: #e4ebf2 0.1rem solid;
+  border: none;
+  padding: 0.9rem;
+  background-color: #465362;
+  font-size: 1rem;
+  border-radius: 1rem;
+  border: #e4ebf2 0.1rem solid;
 }
 .todo-container {
-    width: 100%;
+  width: 100%;
 }
 
 ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .todo {
-    background-color: #c0dfa1;
-    padding: 1rem;
-    border-radius: 1rem;
-    width: 85%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    color: black;
+  background-color: #c0dfa1;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #9fc490;
+  width: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+li input {
+  padding: 1rem;
+  height: 3rem;
+  width: 25rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 2.3rem;
+  font-family: 'Poppins', sans-serif;
 }
 
 .action-btn {
-    margin-left: 1.5rem;
-    border: none;
-    background-color: #c0dfa1;
+  margin-left: 1.5rem;
+  border: none;
+  background-color: #c0dfa1;
 }
 
 .action-btn i {
-    font-size: 1.7rem;
+  font-size: 1.7rem;
 }
 
 .checkBtn {
-    background-color:#465362;
-    color: #465362;
+  background-color: #465362;
+  color: #465362;
 }
 
 .todo-item {
-    width: 30%;
-    margin-left: 1rem;
-    list-style: none;
-    font-size: 1.1rem;
+  width: 30%;
+  margin-left: 1rem;
+  list-style: none;
+  font-size: 1.1rem;
 }
 .buttonsContainer {
-    width: 70%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
 }
